@@ -12,24 +12,26 @@ import { db } from "./firebase";
 import firebase from "firebase";
 
 function Feed() {
-  const [input, setInput] = useState ('');
   const [posts, setPosts] = useState([]);
+  const [input, setInput] = useState ('');
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => 
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    )
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => 
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
   }, []);
 
   const sendPost = (e) => {
     e.preventDefault();
 
-    db.collection('post').add({
+    db.collection('posts').add({
       name: 'Gozel Cholukova',
       description: 'please work',
       message: input,
@@ -64,7 +66,7 @@ function Feed() {
       </div>
 
       <div className="topchik">  
-        <h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Sort:  </h2>
+        <h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Sort:  </h2>
         <h4>Popular <ArrowDropDownIcon className="down"/></h4>
       </div>     
       
@@ -77,14 +79,9 @@ function Feed() {
           photoUrl={photoUrl}
         />
       ))}
-      
-      <Posts 
-        name='Gozel Cholukova' 
-        description='This is a test' 
-        message='Hi hello' 
-      />
     </div>
   );
 }
 
 export default Feed;
+

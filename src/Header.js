@@ -6,8 +6,9 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import WorkIcon from '@material-ui/icons/Work';
 import TextsmsIcon from '@material-ui/icons/Textsms';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import HeaderOption from './HeaderOption';
 import AppsIcon from '@material-ui/icons/Apps';
+import HeaderOption from './HeaderOption';
+
 
 function Header() {
   return (
@@ -17,7 +18,7 @@ function Header() {
 
         <div className="header__search">
           <SearchIcon />
-          <input type="text"/>
+          <input placeholder="Search" type="text"/>
 
         </div>
       </div>

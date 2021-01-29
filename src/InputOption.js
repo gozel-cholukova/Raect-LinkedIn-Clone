@@ -11,15 +11,3 @@ function InputOption({ Icon, title, color}) {
 }
 
 export default InputOption;
-
-
-
-     
-      
-      
-      
-      
-      
-     
-      
-      
