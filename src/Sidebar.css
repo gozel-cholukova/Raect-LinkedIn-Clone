@@ -8,7 +8,7 @@
 }
 
 .sidebar__avatar {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .sidebar__top {
@@ -26,10 +26,13 @@
 .sidebar__top > h4 {
   color: gray;
   font-size: 12px;
+  padding-top: -25px;
 }
 
 .sidebar__top > h2 {
   font-size: 18px;
+  padding-bottom: -50px;
+  padding-top: -35px;
 }
 
 .sidebar__top > img {
