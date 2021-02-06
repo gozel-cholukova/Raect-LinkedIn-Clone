@@ -27,6 +27,7 @@
   color: gray;
   font-size: 12px;
   padding-top: -25px;
+  margin-top: -13px;
 }
 
 .sidebar__top > h2 {
@@ -54,6 +55,7 @@
   color: gray;
   font-size: 13px;
   font-weight: 600;
+  margin-top: -13px;
 }
 
 .sidebar__stats {
@@ -82,6 +84,7 @@
 .sidebar__bottom > p {
   font-size: 13px;
   padding-bottom: 10px;
+  margin-top: 5px;
 }
 
 .sidebar__recentItem {
@@ -92,6 +95,7 @@
   cursor: pointer;
   margin-bottom: 5px;
   padding: 5px;
+  margin-top: -25px;
 }
 
 .sidebar__recentItem:hover {
@@ -104,6 +108,7 @@
 .sidebar__hash {
   margin-right: 10px;
   margin-left: 5px;
+  margin-top: 12px;
 }
 
 .book {
