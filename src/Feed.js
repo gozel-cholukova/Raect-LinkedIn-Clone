@@ -10,10 +10,14 @@ import InputOption from "./InputOption";
 import Posts from './Posts';
 import { db } from "./firebase";
 import firebase from "firebase";
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
+import FlipMove from "react-flip-move";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState ('');
+  const user= useSelector(selectUser);
 
   useEffect(() => {
     db.collection("posts")
@@ -32,10 +36,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection('posts').add({
-      name: 'Gozel Cholukova',
-      description: 'please work',
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl: user.photoUrl ||  "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
@@ -66,19 +70,21 @@ function Feed() {
       </div>
 
       <div className="topchik">  
-        <h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Sort:  </h2>
+        <h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Sort:  </h2>
         <h4>Popular <ArrowDropDownIcon className="down"/></h4>
       </div>     
       
-      {posts.map(({ id, data: {name, description, message, photoUrl } }) => (
-        <Posts
-          key={id}
-          name={name}
-          description={description}
-          message={message}
-          photoUrl={photoUrl}
-        />
-      ))}
+      <FlipMove>
+        {posts.map(({ id, data: {name, description, message, photoUrl } }) => (
+          <Posts
+            key={id}
+            name={name}
+            description={description}
+            message={message}
+            photoUrl={photoUrl}
+          />
+        ))}
+      </FlipMove>    
     </div>
   );
 }
